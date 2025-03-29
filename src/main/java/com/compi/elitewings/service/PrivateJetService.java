@@ -14,9 +14,7 @@ public class PrivateJetService implements IServicePrivateJet{
     private IPrivateJetRepository privateJetRepository;
 
     @Override
-    public void addPrivateJet(PrivateJet privateJet){
-
-    }
+    public void addPrivateJet(PrivateJet privateJet){ privateJetRepository.save(privateJet); }
 
     @Override
     public Optional<PrivateJet> getPrivateJet(long id) {
@@ -28,11 +26,15 @@ public class PrivateJetService implements IServicePrivateJet{
 
     @Override
     public void deletePrivateJet(long id) {
-
+        if(privateJetRepository.existsById(id)) {
+            privateJetRepository.deleteById(id);
+        }
     }
 
     @Override
     public void updatePrivateJet(PrivateJet privateJet){
-
+        if (privateJetRepository.existsById((long) privateJet.getId())) {
+            privateJetRepository.save(privateJet);
+        }
     }
 }
