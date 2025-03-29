@@ -3,7 +3,6 @@ package com.compi.elitewings.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,9 +13,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity()
-@Table(name="celebrities")
+@Table(name="airports")
 
-public class Celebrity {
+public class Airport {
 
     @JsonIgnore
     @Id
@@ -27,18 +26,10 @@ public class Celebrity {
     private String name;
 
     @Column(nullable = false)
-    private String profession;
+    private String location;
 
     @Column(nullable = false)
-    private double net_worth;
+    private int capacity;
 
-    private boolean suspicious_activity = false;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PrivateJet> privateJets = new ArrayList<>();
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "celebrity", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Flight> flights = new ArrayList<>();
+    private String owners = "Sofia and Natalia the best owners";
 }
