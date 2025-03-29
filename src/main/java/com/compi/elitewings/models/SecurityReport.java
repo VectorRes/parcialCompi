@@ -17,7 +17,7 @@ public class SecurityReport {
     @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "flight_id", nullable = false)

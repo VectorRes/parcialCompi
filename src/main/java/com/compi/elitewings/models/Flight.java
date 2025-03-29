@@ -21,7 +21,7 @@ public class Flight {
     @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "celebrity_id", nullable = false)
