@@ -7,7 +7,8 @@ import java.util.Optional;
 
 public interface IServiceFlight {
     Flight createFlight(Flight flight);
-    Optional<Flight> getFlight(int id);
+    Optional<Flight> getFlight(long id);
+    public List<Flight> getFlights();
     List<Flight> getSuspiciousFlights();
-    void deleteFlight(int id);
+    void deleteFlight(long id);
 }

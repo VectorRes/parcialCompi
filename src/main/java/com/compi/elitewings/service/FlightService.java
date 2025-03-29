@@ -24,8 +24,13 @@ public class FlightService implements IServiceFlight {
     }
 
     @Override
-    public Optional<Flight> getFlight(int id) {
+    public Optional<Flight> getFlight(long id) {
         return flightRepository.findById(id);
+    }
+
+    @Override
+    public List<Flight> getFlights() {
+        return flightRepository.findAll();
     }
 
     @Override
@@ -34,7 +39,7 @@ public class FlightService implements IServiceFlight {
     }
 
     @Override
-    public void deleteFlight(int id) {
+    public void deleteFlight(long id) {
         flightRepository.deleteById(id);
     }
 
