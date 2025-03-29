@@ -22,7 +22,7 @@ public class CelebrityController {
 
     @PostMapping("/celebrities")
     public Celebrity createCelebrity(@RequestBody Celebrity celebrity){
-        this.serviceCelebrity.getCelebrities().add(celebrity);
+        this.serviceCelebrity.addCelebrity(celebrity);
         return celebrity;
     }
 
@@ -37,11 +37,10 @@ public class CelebrityController {
     }
 
 
-
     @PutMapping("/celebrities/{id}")
     public String updateCelebrity(@PathVariable("id") long id, @RequestBody Celebrity celebrity){
         try {
-            celebrity.setId((int) id); // Aseguramos que el ID del objeto sea el mismo que el de la URL
+            celebrity.setId((int) id);
             this.serviceCelebrity.updateCelebrity(celebrity);
             return "Celebrity with ID " + id + " updated successfully.";
         } catch (RuntimeException e) {
