@@ -17,6 +17,7 @@ public class CelebrityService implements  IServiceCelebrity{
 
     @Override
     public void addCelebrity(Celebrity celebrity) {
+        celebrityRepository.save(celebrity);
 
     }
 
@@ -32,11 +33,21 @@ public class CelebrityService implements  IServiceCelebrity{
 
     @Override
     public void deleteCelebrity(long id) {
+        if(this.celebrityRepository.existsById(id)) {
+            this.celebrityRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Celebrity not found with id: " + id);
+        }
 
     }
 
     @Override
     public void updateCelebrity(Celebrity celebrity) {
+        if(this.celebrityRepository.findById(celebrity.getId()).isPresent()) {
+            this.celebrityRepository.save(celebrity);
+        }else {
+            throw new RuntimeException("Celebrity not found with id: " + celebrity.getId());
+        }
 
     }
 
