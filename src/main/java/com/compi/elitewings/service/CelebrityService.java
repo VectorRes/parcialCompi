@@ -43,13 +43,12 @@ public class CelebrityService implements  IServiceCelebrity{
 
     @Override
     public void updateCelebrity(Celebrity celebrity) {
-        if(this.celebrityRepository.findById(celebrity.getId()).isPresent()) {
+        if(celebrityRepository.existsById((long) celebrity.getId())) {
             this.celebrityRepository.save(celebrity);
         }else {
             throw new RuntimeException("Celebrity not found with id: " + celebrity.getId());
         }
 
     }
-
 
 }
